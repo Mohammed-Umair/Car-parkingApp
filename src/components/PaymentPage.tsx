@@ -12,7 +12,7 @@ import {
 import React, { useContext, useEffect, useState } from "react";
 import { slotContext } from "./Context";
 import { useLocation } from "react-router-dom";
-import {useNavigate} from "react-router"
+import { useNavigate } from "react-router";
 import axios from "axios";
 
 const PaymentPage = () => {
@@ -128,7 +128,7 @@ const PaymentPage = () => {
       }
     });
     setCreateSlot([...newSlots]);
-    navigate("/parkinglot")
+    navigate("/parkinglot");
   };
   return (
     <>
