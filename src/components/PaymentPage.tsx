@@ -26,6 +26,7 @@ const PaymentPage = () => {
 
   const [success, setSuccess] = useState(false);
   const [fail, setFail] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const { currCarSlot, createSlot, setCreateSlot }: any =
     useContext(slotContext);
@@ -50,9 +51,25 @@ const PaymentPage = () => {
   //   // const roundSeconds = Math.round((roundHours - roundMinutes) * 60);
   //   // console.log("sec", roundSeconds);
   // };
+  
+  useEffect(() => {
+     const starttime:any=currCarSlot.time.getTime()
+     console.log("starttime/////",starttime);
+      const currTime:any=new Date().getTime()
+      console.log("currTime///",currTime);
+      const diff_inTime=Math.abs(currTime-starttime)/3600000
+      console.log("diff_inTime",diff_inTime);
+      
+    
+   } )
+   
+
   useEffect(() => {
     ////////////////
     // timeCalculate();
+
+     
+    
     const timeDuration: any =
       Math.abs(new Date().getTime() - new Date(currCarSlot?.time).getTime()) /
       3600000;
@@ -63,13 +80,11 @@ const PaymentPage = () => {
     const roundMinutes = Math.round((timeDuration - roundHours) * 60);
     console.log("min", roundMinutes);
     setMinutes(roundMinutes);
-    // const roundSeconds = Math.round((roundHours - roundMinutes) * 60);
-    // console.log("sec", roundSeconds);
-    // setSec(roundSeconds)
+    
 
-    const DiffrenceInTime = Math.ceil(timeDuration) / 3600000;
+    const DiffrenceInTime = Math.ceil(timeDuration) 
 
-    console.log("DiffrenceInTime", DiffrenceInTime);
+    console.log("DiffrenceInTime", DiffrenceInTime*10);
     // setRate(DiffrenceInTime * 10);
 
     let amount;
@@ -79,21 +94,10 @@ const PaymentPage = () => {
       amount = 10 + (DiffrenceInTime - 2) * 10;
     }
     setRate(amount);
-  }, [currCarSlot]);
+  },[minutes]);
 
-  const handlePayment = async () => {
-    // axios
-    //   .post("https://httpstat.us/200", {
-    //     method: "POST",
-
-    //     body: {
-    //       "car-registration": currCarSlot.carno,
-    //       charge: rate,
-    //     },
-    //   })
-    //   .then((response) => {
-    //     console.log("Response==>", response);
-    //   })
+  const handlePayment = async (id:any) => {
+    setOpen(true)
     await axios
       .post(`https://httpstat.us/200`, {
         method: "POST",
@@ -107,14 +111,12 @@ const PaymentPage = () => {
         }),
       })
       .then((response) => {
-        response.status === 200 ? setSuccess(true) : setFail(true);
+        // response.status === 200 ? setSuccess(true) : setFail(true);
 
         setApiResponse(response.data);
       });
-  };
-  const navigate = useNavigate();
-  const handleBack = (id: any) => {
-    const newSlots: any = [];
+
+      const newSlots: any = [];
     createSlot.forEach((item: any) => {
       if (item.id === id) {
         newSlots.push({
@@ -128,8 +130,32 @@ const PaymentPage = () => {
       }
     });
     setCreateSlot([...newSlots]);
-    navigate("/parkinglot");
+    // navigate("/parkinglot");
   };
+  const navigate = useNavigate();
+  // const handleBack = (id: any) => {
+
+  //   const newSlots: any = [];
+  //   createSlot.forEach((item: any) => {
+  //     if (item.id === id) {
+  //       newSlots.push({
+  //         ...item,
+  //         allocated: true,
+  //         carno: "",
+  //         time: null,
+  //       });
+  //     } else {
+  //       newSlots.push(item);
+  //     }
+  //   });
+  //   setCreateSlot([...newSlots]);
+  //   navigate("/parkinglot");
+  // };
+
+const handleBack=()=>{
+  navigate("/parkinglot")
+}
+
   return (
     <>
       <Box
@@ -143,7 +169,7 @@ const PaymentPage = () => {
           backgroundImage: "linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%)",
         }}
       >
-        <Box
+        {/* <Box
           sx={{
             position: "absolute",
             top: 40,
@@ -152,9 +178,11 @@ const PaymentPage = () => {
         >
           {success && <Alert severity="info">Payment Successful...!!</Alert>}
           {fail && <Alert severity="warning">Payment unSuccessful...!!</Alert>}
-        </Box>
+        </Box> */}
         {/* {currCarSlot?.map((elem: any) => {
         return ( */}
+
+        {!open?
         <Card
           sx={{
             minWidth: 300,
@@ -225,7 +253,7 @@ const PaymentPage = () => {
                 fontFamily: "monospace",
                 bgcolor: "White",
               }}
-              onClick={handlePayment}
+              onClick={()=>handlePayment(currCarSlot.id)}
             >
               Payment
             </Button>
@@ -239,12 +267,49 @@ const PaymentPage = () => {
                 fontFamily: "monospace",
                 bgcolor: "white",
               }}
-              onClick={() => handleBack(currCarSlot.id)}
+              // onClick={() => handleBack(currCarSlot.id)}
+              onClick={handleBack}
             >
               Back to Slot
             </Button>
           </CardActions>
-        </Card>
+        </Card>:
+        
+          <Box 
+          sx={{
+            minWidth: 300,
+            height: 300,
+            mt: 2,
+            boxShadow: 10,
+            borderRadius: "20px",
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "#FFDEE9",
+            backgroundImage: "linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%)",
+          }}
+          >
+            <Alert 
+            sx={{
+              mt:10,
+            }}
+            severity="info">Payment Successful...!!</Alert>
+            <Button
+              variant="outlined"
+              color="warning"
+              size="small"
+              sx={{
+                fontSize: "16px",
+                fontWeight: "600",
+                fontFamily: "monospace",
+                bgcolor: "white",
+                mt:13,
+              }}
+              onClick={handleBack}
+            >
+              Back to Slot
+            </Button>
+          </Box>
+        }
         {/* );
       })} */}
       </Box>

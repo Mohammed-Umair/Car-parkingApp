@@ -5,6 +5,7 @@ import { slotContext } from "./Context";
 
 const Parking = () => {
   const [number, setNumber] = useState<any>("");
+  const [alert, setAlert] = useState(false)
   // console.log("nmber", number);
   const { setCreateSlot } = useContext(slotContext);
   // console.log("createSlot---->", createSlot);
@@ -22,6 +23,7 @@ const Parking = () => {
       });
     }
     setCreateSlot(temp);
+    setAlert(true)
     navigate("/parkinglot");
   };
   return (
@@ -36,6 +38,18 @@ const Parking = () => {
         backgroundImage: "linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%)",
       }}
     >
+      <Box
+        sx={{
+          position: "absolute",
+          top: 40,
+          width: "50%",
+        }}
+      >
+        
+        {alert && (
+          <Alert severity="warning">Slot are generated!</Alert>
+        )}
+      </Box>
       <Box
         sx={{
           width: "350px",
@@ -65,6 +79,7 @@ const Parking = () => {
           variant="outlined"
           fullWidth
           onChange={(e) => setNumber(e.target.value)}
+          data-testid="enterSlotNumber"
         />
 
         <Button
@@ -78,6 +93,7 @@ const Parking = () => {
             bgcolor: "White",
           }}
           onClick={HandleSlotGenerator}
+          data-testid="GenrateBtn"
         >
           Generate
         </Button>

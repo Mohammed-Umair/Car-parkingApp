@@ -81,9 +81,11 @@ const ParkingLot: FC = () => {
   const HandlePaymentPage: React.MouseEventHandler<HTMLDivElement> = (
     selectedId
   ) => {
+    
     let slots = createSlot.find((elem) => {
       return elem.id === selectedId;
     });
+
 
     console.log("slots-------->", slots);
     setCurrCarSlot(slots);
