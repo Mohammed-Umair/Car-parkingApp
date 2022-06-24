@@ -186,6 +186,9 @@ const ParkingLot: FC = () => {
       >
         {createSlot?.map((item: any) => {
           return (
+            <>
+          
+            {!item.allocated?
             <Card
               key={item.id}
               style={{
@@ -225,7 +228,49 @@ const ParkingLot: FC = () => {
                   Car No: <> {item.carno}🚘</>
                 </Typography>
               </CardContent>
-            </Card>
+            </Card>:
+            <Card
+            key={item.id}
+            style={{
+              background:
+                item.carno === ""
+                  ? "#fff "
+                  : "linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%)",
+            }}
+            sx={{
+              minWidth: 275,
+              mt: 2,
+              boxShadow: 2,
+              borderRadius: "20px",
+            }}
+           
+          >
+            <CardContent>
+              <Typography
+                sx={{
+                  fontSize: 16,
+                  fontWeight: 600,
+                  fontFamily: "monospace",
+                }}
+                color="orangered"
+                gutterBottom
+              >
+                Id: <> {item.id}</>
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: 16,
+                  fontWeight: 600,
+                  fontFamily: "monospace",
+                }}
+                gutterBottom
+              >
+                Car No: <> {item.carno}🚘</>
+              </Typography>
+            </CardContent>
+          </Card>
+            }
+              </>
           );
         })}
       </Box>

@@ -53,15 +53,26 @@ const PaymentPage = () => {
   // };
   
   useEffect(() => {
-     const starttime:any=currCarSlot.time.getTime()
-     console.log("starttime/////",starttime);
-      const currTime:any=new Date().getTime()
-      console.log("currTime///",currTime);
-      const diff_inTime=Math.abs(currTime-starttime)/3600000
-      console.log("diff_inTime",diff_inTime);
-      
+//      const starttime=currCarSlot.time.getTime()
+//      console.log("starttime/////",starttime);
+//       const currTime=new Date().getTime()
+//       console.log("currTime///",currTime);
+//  //////
+//     const diffInhr = Math.abs(currTime - starttime)/3600000
+//     console.log("hours....",diffInhr);
+//     const diffInMs = Math.abs(currTime - starttime)/60000
+//     console.log("Min....",diffInMs);
+//     const diffInSE = Math.abs(currTime - starttime)/1000
+//     console.log("sec....",diffInSE);
+//     setSec(diffInSE)
     
-   } )
+
+//     const totalTimeDuration: any =
+//       Math.abs(currTime - starttime) / 3600000;
+//     console.log("totalTimeDuration", totalTimeDuration);
+   
+  
+    },[sec] )
    
 
   useEffect(() => {
@@ -70,19 +81,41 @@ const PaymentPage = () => {
 
      
     
-    const timeDuration: any =
-      Math.abs(new Date().getTime() - new Date(currCarSlot?.time).getTime()) /
-      3600000;
-    console.log("timeDuration", timeDuration);
-    const roundHours = Math.round(timeDuration);
-    console.log("hrs", roundHours);
-    setHours(roundHours);
-    const roundMinutes = Math.round((timeDuration - roundHours) * 60);
-    console.log("min", roundMinutes);
-    setMinutes(roundMinutes);
+    // const timeDuration: any =
+    //   Math.abs(new Date().getTime() - new Date(currCarSlot?.time).getTime()) /
+    //   3600000;
+    // console.log("timeDuration", timeDuration);
+    // const roundHours = Math.round(timeDuration);
+    // console.log("hrs", roundHours);
+    // setHours(roundHours);
+    // const roundMinutes = Math.round((timeDuration - roundHours) * 60);
+    // console.log("min", roundMinutes);
+    // setMinutes(roundMinutes);
+    
+    const starttime=currCarSlot.time.getTime()
+     console.log("starttime/////",starttime);
+      const currTime=new Date().getTime()
+      console.log("currTime///",currTime);
+ //////
+    const diffInhr:any = Math.abs(currTime - starttime)/3600000
+    console.log("hours....",diffInhr);
+    setHours(diffInhr)
+    const diffInMs:any = Math.abs(currTime - starttime)/60000
+    console.log("Min....",diffInMs);
+    setMinutes(diffInMs)
+    const diffInSE = Math.abs(currTime - starttime)/1000
+    console.log("sec....",diffInSE);
+  
+      setSec(diffInSE )
+    
+    
     
 
-    const DiffrenceInTime = Math.ceil(timeDuration) 
+    const totalTimeDuration: any =
+      Math.abs(currTime - starttime) / 3600000;
+    console.log("totalTimeDuration", totalTimeDuration);
+
+    const DiffrenceInTime = Math.ceil(totalTimeDuration) 
 
     console.log("DiffrenceInTime", DiffrenceInTime*10);
     // setRate(DiffrenceInTime * 10);
@@ -94,7 +127,11 @@ const PaymentPage = () => {
       amount = 10 + (DiffrenceInTime - 2) * 10;
     }
     setRate(amount);
-  },[minutes]);
+  },[sec]);
+
+
+
+  
 
   const handlePayment = async (id:any) => {
     setOpen(true)
@@ -222,8 +259,7 @@ const handleBack=()=>{
               gutterBottom
             >
               {/* Time:<>{data?.state?.time}</> */}
-              {/* Time:<>{elem.time}</> */}
-              Time: {hours}:{minutes}
+              Time:<>{hours.toString().slice(0,1)}:{minutes.toString().slice(0,2)}:{sec.toString().slice(0,3)}</>
             </Typography>
             <Typography
               sx={{
