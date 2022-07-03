@@ -68,7 +68,8 @@ const ParkingLot: FC = () => {
         createSlot.forEach((item: any) => {
           if (item.id === randomSlot.id && item.allocated) {
             newSlot.push(updateSlots);
-          } else {
+          } 
+          else {
             newSlot.push(item);
           }
         });
@@ -79,17 +80,19 @@ const ParkingLot: FC = () => {
   };
   const navigate = useNavigate();
   const HandlePaymentPage: React.MouseEventHandler<HTMLDivElement> = (
-    selectedId
+    slot
   ) => {
     
-    let slots = createSlot.find((elem) => {
-      return elem.id === selectedId;
+    // let slots = createSlot.find((elem) => {
+    //   return elem.id === slot;
+    // });
+
+
+    // console.log("slots-------->", slots);
+    // setCurrCarSlot(slots);
+    navigate("/paymentPage",{
+      state:slot
     });
-
-
-    console.log("slots-------->", slots);
-    setCurrCarSlot(slots);
-    navigate("/paymentPage");
     // navigate("/paymentPage", {
     //   state: slots,
     // });
@@ -177,10 +180,11 @@ const ParkingLot: FC = () => {
         component={Paper}
         sx={{
           width: "600px",
+          padding:"20px",
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "space-around",
-          marginTop: "30px",
+          
           boxShadow: 10,
         }}
       >
@@ -203,7 +207,7 @@ const ParkingLot: FC = () => {
                 boxShadow: 2,
                 borderRadius: "20px",
               }}
-              onClick={() => HandlePaymentPage(item.id)}
+              onClick={() => HandlePaymentPage(item)}
             >
               <CardContent>
                 <Typography

@@ -36,14 +36,14 @@ describe("TextField Test",()=>{
     })
 })
 
-// describe("button test of parking component",()=>{
-//     test("generate button test",()=>{
-//         render(
-//             <BrowserRouter>
-//             <Parking/>
-//             </BrowserRouter>
-//         )
-//         const GenerateButton=screen.getAllByTestId("GenerateBtn")
-//         expect(GenerateButton).to
-//     })
-// })
+describe("button test of parking component",()=>{
+    test("generate button test",()=>{
+        render(
+            <BrowserRouter>
+            <Parking/>
+            </BrowserRouter>
+        )
+        const GenerateButton=screen.getByTestId("GenerateBtn")
+        expect(GenerateButton.textContent).toBe("Generate")
+    })
+})
