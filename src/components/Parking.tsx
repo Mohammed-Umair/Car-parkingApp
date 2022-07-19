@@ -93,6 +93,7 @@ const Parking = () => {
             bgcolor: "White",
           }}
           onClick={HandleSlotGenerator}
+          disabled={!number}
           data-testid="GenerateBtn"
         >
           Generate

@@ -171,6 +171,7 @@ const ParkingLot: FC = () => {
             bgcolor: "White",
           }}
           onClick={handleCarPark}
+          disabled={!carNo}
         >
           Park
         </Button>
