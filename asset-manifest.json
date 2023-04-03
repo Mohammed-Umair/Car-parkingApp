@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Car-parkingApp/static/css/main.073c9b0a.css",
-    "main.js": "/Car-parkingApp/static/js/main.17c30491.js",
+    "main.js": "/Car-parkingApp/static/js/main.bf1ef565.js",
     "static/js/787.199c094e.chunk.js": "/Car-parkingApp/static/js/787.199c094e.chunk.js",
     "index.html": "/Car-parkingApp/index.html",
     "main.073c9b0a.css.map": "/Car-parkingApp/static/css/main.073c9b0a.css.map",
-    "main.17c30491.js.map": "/Car-parkingApp/static/js/main.17c30491.js.map",
+    "main.bf1ef565.js.map": "/Car-parkingApp/static/js/main.bf1ef565.js.map",
     "787.199c094e.chunk.js.map": "/Car-parkingApp/static/js/787.199c094e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.17c30491.js"
+    "static/js/main.bf1ef565.js"
   ]
 }
