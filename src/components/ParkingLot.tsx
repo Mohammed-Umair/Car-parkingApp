@@ -7,6 +7,7 @@ import {
   CardContent,
   Paper,
   Alert,
+  Grid,
 } from "@mui/material";
 import React, { FC, useContext, useState } from "react";
 import { slotContext } from "./Context";
@@ -68,8 +69,7 @@ const ParkingLot: FC = () => {
         createSlot.forEach((item: any) => {
           if (item.id === randomSlot.id && item.allocated) {
             newSlot.push(updateSlots);
-          } 
-          else {
+          } else {
             newSlot.push(item);
           }
         });
@@ -79,19 +79,15 @@ const ParkingLot: FC = () => {
     setCarNo("");
   };
   const navigate = useNavigate();
-  const HandlePaymentPage: React.MouseEventHandler<HTMLDivElement> = (
-    slot
-  ) => {
-    
+  const HandlePaymentPage: React.MouseEventHandler<HTMLDivElement> = (slot) => {
     // let slots = createSlot.find((elem) => {
     //   return elem.id === slot;
     // });
 
-
     // console.log("slots-------->", slots);
     // setCurrCarSlot(slots);
-    navigate("/paymentPage",{
-      state:slot
+    navigate("/paymentPage", {
+      state: slot,
     });
     // navigate("/paymentPage", {
     //   state: slots,
@@ -128,157 +124,166 @@ const ParkingLot: FC = () => {
           <Alert severity="warning">Vehicle is already allocated!</Alert>
         )}
       </Box>
-      <Box
-        sx={{
-          width: "350px",
-          height: "250px",
-          marginTop: "50px",
-          display: "flex",
-          justifyContent: "space-around",
-          alignItems: "center",
-          flexWrap: "wrap",
-        }}
-      >
-        <Typography
-          variant="h6"
-          component="h1"
-          sx={{
-            fontSize: "22px",
-            fontWeight: "600",
-            fontFamily: "monospace",
-          }}
-        >
-          Parking Lots
-        </Typography>
-        <TextField
-          label="Enter Car No"
-          placeholder="Enter The Car Registration Number"
-          variant="outlined"
-          fullWidth
-          onChange={(e) => setCarNo(e.target.value)}
-          onFocus={() => setCarNo("")}
-        />
-
-        <Button
-          // size="large"
-          fullWidth
-          color="success"
-          variant="outlined"
-          sx={{
-            fontSize: "20px",
-            fontWeight: "600",
-            fontFamily: "monospace",
-            bgcolor: "White",
-          }}
-          onClick={handleCarPark}
-          disabled={!carNo}
-        >
-          Park
-        </Button>
-      </Box>
-
-      <Box
-        component={Paper}
-        sx={{
-          width: "600px",
-          padding:"20px",
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "space-around",
-          
-          boxShadow: 10,
-        }}
-      >
-        {createSlot?.map((item: any) => {
-          return (
-            <>
-          
-            {!item.allocated?
-            <Card
-              key={item.id}
-              style={{
-                background:
-                  item.carno === ""
-                    ? "#fff "
-                    : "linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%)",
-              }}
-              sx={{
-                minWidth: 275,
-                mt: 2,
-                boxShadow: 2,
-                borderRadius: "20px",
-              }}
-              onClick={() => HandlePaymentPage(item)}
-            >
-              <CardContent>
-                <Typography
-                  sx={{
-                    fontSize: 16,
-                    fontWeight: 600,
-                    fontFamily: "monospace",
-                  }}
-                  color="orangered"
-                  gutterBottom
-                >
-                  Id: <> {item.id}</>
-                </Typography>
-                <Typography
-                  sx={{
-                    fontSize: 16,
-                    fontWeight: 600,
-                    fontFamily: "monospace",
-                  }}
-                  gutterBottom
-                >
-                  Car No: <> {item.carno}🚘</>
-                </Typography>
-              </CardContent>
-            </Card>:
-            <Card
-            key={item.id}
-            style={{
-              background:
-                item.carno === ""
-                  ? "#fff "
-                  : "linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%)",
-            }}
+      <Grid container>
+        <Grid item xs={12} sm={12} md={6} lg={6}>
+          <Box
             sx={{
-              minWidth: 275,
-              mt: 2,
-              boxShadow: 2,
-              borderRadius: "20px",
+              width: "350px",
+              height: "250px",
+              marginTop: "50px",
+              marginLeft: "20px",
+              display: "flex",
+              justifyContent: "space-around",
+              alignItems: "center",
+              flexWrap: "wrap",
             }}
-           
           >
-            <CardContent>
-              <Typography
-                sx={{
-                  fontSize: 16,
-                  fontWeight: 600,
-                  fontFamily: "monospace",
-                }}
-                color="orangered"
-                gutterBottom
-              >
-                Id: <> {item.id}</>
-              </Typography>
-              <Typography
-                sx={{
-                  fontSize: 16,
-                  fontWeight: 600,
-                  fontFamily: "monospace",
-                }}
-                gutterBottom
-              >
-                Car No: <> {item.carno}🚘</>
-              </Typography>
-            </CardContent>
-          </Card>
-            }
-              </>
-          );
-        })}
-      </Box>
+            <Typography
+              variant="h6"
+              component="h1"
+              sx={{
+                fontSize: "22px",
+                fontWeight: "600",
+                fontFamily: "monospace",
+              }}
+            >
+              Parking Lots
+            </Typography>
+            <TextField
+              label="Enter Car No"
+              placeholder="Enter The Car Registration Number"
+              variant="outlined"
+              fullWidth
+              onChange={(e) => setCarNo(e.target.value)}
+              onFocus={() => setCarNo("")}
+            />
+
+            <Button
+              // size="large"
+              fullWidth
+              color="success"
+              variant="outlined"
+              sx={{
+                fontSize: "20px",
+                fontWeight: "600",
+                fontFamily: "monospace",
+                bgcolor: "White",
+              }}
+              onClick={handleCarPark}
+              disabled={!carNo}
+            >
+              Park
+            </Button>
+          </Box>
+        </Grid>
+        <Grid item xs={12} sm={12} md={6} lg={6}>
+          <Box
+            component={Paper}
+            sx={{
+              // width: "600px",
+              maxHeight: "500px",
+              overflow: "scroll",
+              padding: "20px",
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "space-around",
+
+              boxShadow: 10,
+            }}
+          >
+            <Grid item xs={12} sm={12} md={6} lg={6}>
+              {createSlot?.map((item: any) => {
+                return (
+                  <>
+                    {!item.allocated ? (
+                      <Card
+                        key={item.id}
+                        style={{
+                          background:
+                            item.carno === ""
+                              ? "#fff "
+                              : "linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%)",
+                        }}
+                        sx={{
+                          minWidth: 275,
+                          mt: 2,
+                          boxShadow: 2,
+                          borderRadius: "20px",
+                        }}
+                        onClick={() => HandlePaymentPage(item)}
+                      >
+                        <CardContent>
+                          <Typography
+                            sx={{
+                              fontSize: 16,
+                              fontWeight: 600,
+                              fontFamily: "monospace",
+                            }}
+                            color="orangered"
+                            gutterBottom
+                          >
+                            Id: <> {item.id}</>
+                          </Typography>
+                          <Typography
+                            sx={{
+                              fontSize: 16,
+                              fontWeight: 600,
+                              fontFamily: "monospace",
+                            }}
+                            gutterBottom
+                          >
+                            Car No: <> {item.carno}🚘</>
+                          </Typography>
+                        </CardContent>
+                      </Card>
+                    ) : (
+                      <Card
+                        key={item.id}
+                        style={{
+                          background:
+                            item.carno === ""
+                              ? "#fff "
+                              : "linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%)",
+                        }}
+                        sx={{
+                          minWidth: 275,
+                          mt: 2,
+                          boxShadow: 2,
+                          borderRadius: "20px",
+                        }}
+                      >
+                        <CardContent>
+                          <Typography
+                            sx={{
+                              fontSize: 16,
+                              fontWeight: 600,
+                              fontFamily: "monospace",
+                            }}
+                            color="orangered"
+                            gutterBottom
+                          >
+                            Id: <> {item.id}</>
+                          </Typography>
+                          <Typography
+                            sx={{
+                              fontSize: 16,
+                              fontWeight: 600,
+                              fontFamily: "monospace",
+                            }}
+                            gutterBottom
+                          >
+                            Car No: <> {item.carno}🚘</>
+                          </Typography>
+                        </CardContent>
+                      </Card>
+                    )}
+                  </>
+                );
+              })}
+            </Grid>
+          </Box>
+        </Grid>
+      </Grid>
     </Box>
   );
 };
