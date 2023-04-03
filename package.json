@@ -1,6 +1,6 @@
 {
-  "name": "typescript-demo",
-  "homepage": "https://Mohammed-Umair.github.io/Car-parkingApp",
+  "name": "CarparkingApp",
+  "homepage": "https://Mohammed-Umair.github.io/CarparkingApp",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
