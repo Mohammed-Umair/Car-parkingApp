@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/CarparkingApp/static/css/main.073c9b0a.css",
-    "main.js": "/CarparkingApp/static/js/main.11fb84b3.js",
-    "static/js/787.ff33f839.chunk.js": "/CarparkingApp/static/js/787.ff33f839.chunk.js",
-    "index.html": "/CarparkingApp/index.html",
-    "main.073c9b0a.css.map": "/CarparkingApp/static/css/main.073c9b0a.css.map",
-    "main.11fb84b3.js.map": "/CarparkingApp/static/js/main.11fb84b3.js.map",
-    "787.ff33f839.chunk.js.map": "/CarparkingApp/static/js/787.ff33f839.chunk.js.map"
+    "main.css": "/carParkingApp/static/css/main.073c9b0a.css",
+    "main.js": "/carParkingApp/static/js/main.7c3902e3.js",
+    "static/js/787.72daeeb1.chunk.js": "/carParkingApp/static/js/787.72daeeb1.chunk.js",
+    "index.html": "/carParkingApp/index.html",
+    "main.073c9b0a.css.map": "/carParkingApp/static/css/main.073c9b0a.css.map",
+    "main.7c3902e3.js.map": "/carParkingApp/static/js/main.7c3902e3.js.map",
+    "787.72daeeb1.chunk.js.map": "/carParkingApp/static/js/787.72daeeb1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.11fb84b3.js"
+    "static/js/main.7c3902e3.js"
   ]
 }
