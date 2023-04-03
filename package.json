@@ -1,6 +1,6 @@
 {
-  "name": "CarparkingApp",
-  "homepage": "https://Mohammed-Umair.github.io/CarparkingApp",
+  "name": "carParkingApp",
+  "homepage": "https://Mohammed-Umair.github.io/carParkingApp",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

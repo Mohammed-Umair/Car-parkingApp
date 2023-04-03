@@ -10,10 +10,10 @@ const Routing = () => {
       <Context>
         <BrowserRouter>
           <Routes>
-            <Route path="/CarparkingApp/" element={<Parking />} />
-            <Route path="/CarparkingApp/parkinglot" element={<ParkingLot />} />
+            <Route path="/carParkingApp" element={<Parking />} />
+            <Route path="/carParkingApp/parkinglot" element={<ParkingLot />} />
             <Route
-              path="/CarparkingApp/paymentPage"
+              path="/carParkingApp/paymentPage"
               element={<PaymentPage />}
             />
           </Routes>
