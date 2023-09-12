@@ -153,7 +153,7 @@ useEffect(() => {
  
 
 const handleBack=()=>{
-  navigate("/parkinglot")
+  navigate("/carParkingApp/parkinglot")
 }
 
   return (

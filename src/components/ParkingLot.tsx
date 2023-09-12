@@ -86,7 +86,7 @@ const ParkingLot: FC = () => {
 
     // console.log("slots-------->", slots);
     // setCurrCarSlot(slots);
-    navigate("/paymentPage", {
+    navigate("/carParkingApp/paymentPage", {
       state: slot,
     });
     // navigate("/paymentPage", {

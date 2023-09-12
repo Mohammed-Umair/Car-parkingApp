@@ -24,7 +24,7 @@ const Parking = () => {
     }
     setCreateSlot(temp);
     setAlert(true)
-    navigate("/parkinglot");
+    navigate("/carParkingApp/parkinglot");
   };
   return (
     <Box
